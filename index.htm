@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة إنقاذ الطائرة | تحدي الرياضيات</title>
+    <style>
+        :root {
+            --primary-color: #990000;
+            --bg-color: #0a0e17;
+            --card-bg: #161b22;
+            --text-color: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .light-theme {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #1c1e21;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-color);
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        button:hover { background: var(--primary-color); color: white; }
+
+        h1 { font-size: 2.8rem; margin: 0 0 10px 0; color: var(--primary-color); }
+        
+        .dev-box {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(153, 0, 0, 0.1);
+            border-radius: 15px;
+            border: 1px dashed var(--primary-color);
+        }
+
+        .dev-name {
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 1.4rem;
+            display: block;
+        }
+
+        .download-btn {
+            display: block;
+            margin-top: 35px;
+            padding: 18px;
+            background: linear-gradient(45deg, #990000, #5a0000);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 10px 20px rgba(153, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(153, 0, 0, 0.5);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="controls">
+        <button onclick="toggleTheme()" id="themeBtn">💡 تغيير الثيم</button>
+        <button onclick="toggleLanguage()" id="langBtn">English</button>
+    </div>
+
+    <h1 id="title">إنقاذ الطائرة</h1>
+    
+    <div class="dev-box">
+        <span id="devBy" style="font-size: 0.9rem; opacity: 0.8;">مطور اللعبة</span>
+        <span class="dev-name" id="devName">ياسر مفرح العنزي</span>
+    </div>
+
+    <p id="desc">خض تجربة الطيران الأكثر إثارة، هل تستطيع حماية الركاب والهبوط بسلام بمعرفتك الرياضيات؟</p>
+
+    <a href="https://drive.google.com/file/d/1366PR2ToqwFR_WGspO6IiTPIEdgm-N5r/view?usp=drive_link" class="download-btn" id="dlBtn" target="_blank">
+        تحميل لعبة APK الآن
+    </a>
+
+    <footer>
+        <p id="rights">© 2026 جميع الحقوق محفوظة | ياسر العنزي</p>
+    </footer>
+</div>
+
+<script>
+    let isEnglish = false;
+    
+    function toggleLanguage() {
+        isEnglish = !isEnglish;
+        const els = {
+            title: document.getElementById('title'),
+            desc: document.getElementById('desc'),
+            devBy: document.getElementById('devBy'),
+            devName: document.getElementById('devName'),
+            dlBtn: document.getElementById('dlBtn'),
+            rights: document.getElementById('rights'),
+            langBtn: document.getElementById('langBtn'),
+            themeBtn: document.getElementById('themeBtn')
+        };
+
+        if(isEnglish) {
+            document.body.dir = "ltr";
+            els.title.innerText = "Plane Rescue";
+            els.desc.innerText = "Experience the most exciting flight! Can you protect the passengers and land safely using your Math skills?";
+            els.devBy.innerText = "Game Developer";
+            els.devName.innerText = "Yasser Mufreh Al-Anzi";
+            els.dlBtn.innerText = "Download APK Now";
+            els.rights.innerText = "© 2026 All Rights Reserved | Yasser Al-Anzi";
+            els.langBtn.innerText = "العربية";
+            els.themeBtn.innerText = "💡 Theme";
+        } else {
+            document.body.dir = "rtl";
+            els.title.innerText = "إنقاذ الطائرة";
+            els.desc.innerText = "خض تجربة الطيران الأكثر إثارة، هل تستطيع حماية الركاب والهبوط بسلام بمعرفتك الرياضيات؟";
+            els.devBy.innerText = "مطور اللعبة";
+            els.devName.innerText = "ياسر مفرح العنزي";
+            els.dlBtn.innerText = "تحميل لعبة APK الآن";
+            els.rights.innerText = "© 2026 جميع الحقوق محفوظة | ياسر العنزي";
+            els.langBtn.innerText = "English";
+            els.themeBtn.innerText = "💡 تغيير الثيم";
+        }
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('light-theme');
+    }
+</script>
+
+</body>
+</html>
